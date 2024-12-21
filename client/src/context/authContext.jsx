@@ -29,7 +29,7 @@ const AuthContextProvider = (props) => {
   const getCredits = async () => {
     try {
       const {data} = await axios.get(
-       `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/credits`, {headers : {token}});
+       `${import.meta.env.VITE_BACKEND_URL}api/v1/user/credits`, {headers : {token}});
 
         setCredits(data.userCredits);
     
@@ -43,7 +43,7 @@ const AuthContextProvider = (props) => {
   const generateImage = async (prompt)=>{
     try {
         const response = await axios.post(
-            `${import.meta.env.VITE_BACKEND_URL}/api/v1/image/generate-image`,
+            `${import.meta.env.VITE_BACKEND_URL}api/v1/image/generate-image`,
             { prompt },
             { headers: { token } },
             { withCredentials: true }

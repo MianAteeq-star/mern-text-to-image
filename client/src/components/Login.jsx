@@ -28,7 +28,7 @@ const Login = () => {
     try {
       if (state === "login") {
         const response = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/login`,
+          `${import.meta.env.VITE_BACKEND_URL}api/v1/user/login`,
           { email, password },
           { withCredentials: true }
         );
@@ -48,7 +48,7 @@ const Login = () => {
         console.log(response.data);
       } else {
         const response = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/register`,
+          `${import.meta.env.VITE_BACKEND_URL}api/v1/user/register`,
           { username, email, password },
           { withCredentials: true }
         );
