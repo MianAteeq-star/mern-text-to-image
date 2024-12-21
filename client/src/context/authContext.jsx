@@ -35,7 +35,8 @@ const AuthContextProvider = (props) => {
     
     } catch (error) {
       console.log(error);
-      toast.error(error.response.data.message);
+      console.log(error.response.data.message);
+      // toast.error(error.response.data.message);
     }
   };
 
@@ -56,7 +57,7 @@ const AuthContextProvider = (props) => {
            return response?.data?.imageSrc
         } else {
             console.log(response?.data?.message);
-            toast.error(response?.data?.message);
+            // toast.error(response?.data?.message);
             if(response?.data?.buyCredits === 0){
 navigate("/buy")
             }
@@ -67,7 +68,7 @@ navigate("/buy")
       if(error.response?.data?.buyCredits === 0){
         navigate("/buy")
       }
-      toast.error(error?.response?.data?.message)
+      // toast.error(error?.response?.data?.message)
         
     }
   }

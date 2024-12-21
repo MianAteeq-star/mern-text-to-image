@@ -26,6 +26,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true)
     try {
       if (state === "login") {
         const response = await axios.post(
@@ -34,7 +35,6 @@ const Login = () => {
           { withCredentials: true }
         );
         if (response.data) {
-          setLoading(true)
           setToken(response.data.token);
           localStorage.setItem("user", JSON.stringify(response.data.user));
           localStorage.setItem("token", response.data.token);
@@ -42,7 +42,6 @@ const Login = () => {
           setCredits(response.data.user.buyCredits);
           setShowLogin(false);
           toast.success(response.data.message);
-          setLoading(false)
         } else {
           console.log(response.data.message);
           toast.error(response.data.message);
@@ -57,16 +56,13 @@ const Login = () => {
         );
 
         if (response.data) {
-          setLoading(true)
           setUser(response.data.user);
           setState("login");
           toast.success(response.data.message);
           setEmail("");
           setPassword("");
           setUsername("");
-          setLoading(false)
         } else {
-          setLoading(false)
           console.log(response.data.message);
           toast.error(response.data.message);
         }
