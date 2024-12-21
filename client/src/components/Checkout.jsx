@@ -11,7 +11,7 @@ const Checkout = ({ plan }) => {
 
   const handleCheckout = async () => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/stripe/create-checkout-session`, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}api/v1/stripe/create-checkout-session`, {
         planId: plan.id,
         price: plan.price,
         category: plan.category,
