@@ -44,6 +44,7 @@ const Login = () => {
           toast.success(response.data.message);
         } else {
           console.log(response.data.message);
+          setLoading(false)
           toast.error(response.data.message);
         }
 
@@ -64,6 +65,7 @@ const Login = () => {
           setUsername("");
         } else {
           console.log(response.data.message);
+          setLoading(false)
           toast.error(response.data.message);
         }
         console.log(response.data);
@@ -71,6 +73,7 @@ const Login = () => {
       setLoading(false)
     } catch (error) {
       console.log(error.response.data.message);
+      setLoading(false)
       toast.error(error.response.data.message);
     }
   };
