@@ -14,6 +14,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -33,6 +34,7 @@ const Login = () => {
           { withCredentials: true }
         );
         if (response.data) {
+          setLoading(true)
           setToken(response.data.token);
           localStorage.setItem("user", JSON.stringify(response.data.user));
           localStorage.setItem("token", response.data.token);
@@ -40,6 +42,7 @@ const Login = () => {
           setCredits(response.data.user.buyCredits);
           setShowLogin(false);
           toast.success(response.data.message);
+          setLoading(false)
         } else {
           console.log(response.data.message);
           toast.error(response.data.message);
@@ -54,13 +57,16 @@ const Login = () => {
         );
 
         if (response.data) {
+          setLoading(true)
           setUser(response.data.user);
           setState("login");
           toast.success(response.data.message);
           setEmail("");
           setPassword("");
           setUsername("");
+          setLoading(false)
         } else {
+          setLoading(false)
           console.log(response.data.message);
           toast.error(response.data.message);
         }
@@ -135,7 +141,8 @@ const Login = () => {
           </div>
           <p className="text-blue-600 mt-4 mb-2">Forgot Password?</p>
           <button className="bg-blue-500 text-white p-2 w-full rounded-full ">
-            {state === "login" ? "Login" : "Create Account"}
+            {}
+            { loading?  "Loading..." : state === "login" ? "Login" : "Create Account"}
           </button>
 
           {state === "login" ? (
